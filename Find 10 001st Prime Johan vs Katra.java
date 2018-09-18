@@ -3,11 +3,15 @@ package com.company;
 
 public class Main {
 
-    static int size = 40;
+    static int size = 10001;
 
     static boolean isPrime(int p) {
 
-        for (int i = 3; i * i < p; i+=2) {
+        for (int i = 3; i < p; i+=2) {
+
+            if(i*i > p){
+                return true;
+            }
 
             if (p % i == 0) {
                 return false;
@@ -23,11 +27,11 @@ public class Main {
         int[] katra = katra();
 
 
-        System.out.printf("%n%nJohan:   Katra:%n%n");
+        System.out.printf("%n%n   Johan:     Katra:%n%n");
 
-        for(int i = 0; i < size;i++){
+        for (int i = 0; i < size; i++) {
 
-            System.out.printf("%3d %6d%n",johan[i],katra[i]);
+            System.out.printf("%6d %10d%n", johan[i], katra[i]);
 
         }
     }
@@ -44,9 +48,10 @@ public class Main {
 
         int primeIndex = 1;
 
-        for (int i = 3; primeIndex < size; i+=2) {
 
-            if ((i > 10 && i % 10  == 5) || (i > 10 && i % 3 == 0) || (i % 2 == 0)) {
+        for (int i = 3; primeIndex < size; i += 2) {
+
+            if ((i > 10 && i % 10 == 5) || (i > 10 && i % 3 == 0) || (i % 2 == 0)) {
                 continue;
             }
             if (isPrime(i)) {
@@ -59,7 +64,7 @@ public class Main {
 //            System.out.println(p);
 //        }
 
-        System.out.printf("Johan: %n%d%n",primeList[size - 1]);
+        System.out.printf("Johan: %n%d%n", primeList[size - 1]);
 
         endTime = System.nanoTime();
         duration = (endTime - startTime) / 1000000000;
@@ -122,7 +127,7 @@ public class Main {
 //            System.out.println(p);
 //        }
 
-        System.out.printf("Katra: %n%d%n",primeNum[size - 1]);
+        System.out.printf("Katra: %n%d%n", primeNum[size - 1]);
         long testHalt = System.nanoTime();
         System.out.printf("Runtime: %3.2f sec \n",
                 ((double) (testHalt - testStart) / 1000000000));
